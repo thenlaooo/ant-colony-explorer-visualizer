@@ -62,7 +62,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
           <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4">
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="antCount" className="slider-label">Ants</Label>
+                <Label htmlFor="antCount" className="slider-label">Муравьи</Label>
                 <span className="text-sm font-medium">{parameters.antCount}</span>
               </div>
               <Slider
@@ -78,7 +78,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
             
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="alpha" className="slider-label">Alpha (α)</Label>
+                <Label htmlFor="alpha" className="slider-label">Альфа (α)</Label>
                 <span className="text-sm font-medium">{parameters.alpha.toFixed(1)}</span>
               </div>
               <Slider
@@ -94,7 +94,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
             
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="beta" className="slider-label">Beta (β)</Label>
+                <Label htmlFor="beta" className="slider-label">Бета (β)</Label>
                 <span className="text-sm font-medium">{parameters.beta.toFixed(1)}</span>
               </div>
               <Slider
@@ -112,7 +112,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
           <div className="flex flex-col md:flex-row justify-between space-y-4 md:space-y-0 md:space-x-4">
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="rho" className="slider-label">Evaporation (ρ)</Label>
+                <Label htmlFor="rho" className="slider-label">Испарение (ρ)</Label>
                 <span className="text-sm font-medium">{parameters.rho.toFixed(2)}</span>
               </div>
               <Slider
@@ -128,7 +128,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
             
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="q" className="slider-label">Pheromone Factor (Q)</Label>
+                <Label htmlFor="q" className="slider-label">Фактор феромона (Q)</Label>
                 <span className="text-sm font-medium">{parameters.q}</span>
               </div>
               <Slider
@@ -144,7 +144,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
             
             <div className="flex-1 space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="iterations" className="slider-label">Max Iterations</Label>
+                <Label htmlFor="iterations" className="slider-label">Макс. итераций</Label>
                 <span className="text-sm font-medium">{parameters.iterations}</span>
               </div>
               <Slider
@@ -166,9 +166,9 @@ const ACOControls: React.FC<ACOControlsProps> = ({
           <CardContent className="pt-6">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <Label htmlFor="speed" className="slider-label">Simulation Speed</Label>
+                <Label htmlFor="speed" className="slider-label">Скорость симуляции</Label>
                 <span className="text-sm font-medium">
-                  {displaySpeed < 200 ? 'Fast' : displaySpeed > 800 ? 'Slow' : 'Medium'}
+                  {displaySpeed < 200 ? 'Быстро' : displaySpeed > 800 ? 'Медленно' : 'Средне'}
                 </span>
               </div>
               <Slider
@@ -187,11 +187,11 @@ const ACOControls: React.FC<ACOControlsProps> = ({
           <CardContent className="pt-6 space-y-2">
             <div className="grid grid-cols-2 gap-2">
               <div>
-                <Label className="text-xs text-muted-foreground">Iteration</Label>
+                <Label className="text-xs text-muted-foreground">Итерация</Label>
                 <p className="text-lg font-semibold">{iteration} / {maxIterations}</p>
               </div>
               <div>
-                <Label className="text-xs text-muted-foreground">Best Tour Length</Label>
+                <Label className="text-xs text-muted-foreground">Длина лучшего маршрута</Label>
                 <p className="text-lg font-semibold">
                   {bestTourLength === Infinity 
                     ? '—' 
@@ -207,23 +207,23 @@ const ACOControls: React.FC<ACOControlsProps> = ({
         {isRunning ? (
           <Button variant="secondary" onClick={onStop}>
             <Pause className="h-4 w-4 mr-2" />
-            Pause
+            Пауза
           </Button>
         ) : (
           <Button variant="default" onClick={onStart}>
             <Play className="h-4 w-4 mr-2" />
-            Start
+            Старт
           </Button>
         )}
         
         <Button variant="outline" onClick={onStep} disabled={isRunning}>
           <SkipForward className="h-4 w-4 mr-2" />
-          Step
+          Шаг
         </Button>
         
         <Button variant="outline" onClick={onReset} disabled={isRunning}>
           <RotateCw className="h-4 w-4 mr-2" />
-          Reset
+          Сброс
         </Button>
         
         <Button 
@@ -233,7 +233,7 @@ const ACOControls: React.FC<ACOControlsProps> = ({
           className="ml-auto"
         >
           <RefreshCw className="h-4 w-4 mr-2" />
-          Random Graph
+          Случайный граф
         </Button>
       </div>
     </div>

@@ -30,8 +30,8 @@ const Index = () => {
   // Generate initial random graph
   useEffect(() => {
     handleGenerateRandomGraph();
-    toast.success("Welcome to Ant Colony Optimization Visualizer!", {
-      description: "Click on the canvas to add nodes or use Random Graph to generate a new problem."
+    toast.success("Добро пожаловать в визуализатор алгоритма муравьиной колонии!", {
+      description: "Нажмите на холст, чтобы добавить узлы, или используйте 'Случайный граф' для создания новой задачи."
     });
   }, []);
   
@@ -58,13 +58,13 @@ const Index = () => {
     });
     
     setSelectedNodeId(null);
-    toast.info(`Generated a random graph with ${nodeCount} nodes`);
+    toast.info(`Создан случайный граф с ${nodeCount} узлами`);
   }, []);
   
   // Start simulation
   const handleStart = useCallback(() => {
     if (state.graph.nodes.length < 3) {
-      toast.error("Need at least 3 nodes to start simulation");
+      toast.error("Необходимо минимум 3 узла для запуска симуляции");
       return;
     }
     
@@ -98,8 +98,8 @@ const Index = () => {
           clearInterval(interval);
           setSimulationInterval(null);
           
-          toast.success("Simulation complete", {
-            description: `Best tour length: ${prevState.bestTourLength.toFixed(2)}`
+          toast.success("Симуляция завершена", {
+            description: `Длина лучшего маршрута: ${prevState.bestTourLength.toFixed(2)}`
           });
           
           return {
@@ -132,13 +132,13 @@ const Index = () => {
   // Perform a single step
   const handleStep = useCallback(() => {
     if (state.graph.nodes.length < 3) {
-      toast.error("Need at least 3 nodes to run simulation");
+      toast.error("Необходимо минимум 3 узла для запуска симуляции");
       return;
     }
     
     // Check if we've reached the maximum iterations
     if (state.currentIteration >= parameters.iterations) {
-      toast.info("Maximum iterations reached");
+      toast.info("Достигнуто максимальное количество итераций");
       return;
     }
     
@@ -156,7 +156,7 @@ const Index = () => {
       running: false
     });
     
-    toast.info("Simulation reset");
+    toast.info("Симуляция сброшена");
   }, [state]);
   
   // Update nodes
@@ -217,10 +217,10 @@ const Index = () => {
       <div className="max-w-7xl mx-auto space-y-6">
         <header className="text-center mb-8">
           <h1 className="text-3xl font-bold tracking-tight text-foreground mb-2">
-            Ant Colony Optimization Visualizer
+            Визуализатор алгоритма муравьиной колонии
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Visualize how the ant colony optimization algorithm finds near-optimal solutions to complex problems like the Traveling Salesman Problem.
+            Наблюдайте, как алгоритм муравьиной колонии находит близкие к оптимальным решения сложных задач, таких как задача коммивояжёра.
           </p>
         </header>
         
@@ -228,9 +228,9 @@ const Index = () => {
           <div className="lg:col-span-2">
             <Card className="overflow-hidden">
               <CardHeader className="bg-card border-b">
-                <CardTitle>Graph Visualization</CardTitle>
+                <CardTitle>Визуализация графа</CardTitle>
                 <CardDescription>
-                  Click to add nodes, drag to move them
+                  Нажимайте, чтобы добавлять узлы, перетаскивайте для их перемещения
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0 relative">
@@ -254,9 +254,9 @@ const Index = () => {
           <div>
             <Card>
               <CardHeader className="bg-card border-b">
-                <CardTitle>Algorithm Controls</CardTitle>
+                <CardTitle>Управление алгоритмом</CardTitle>
                 <CardDescription>
-                  Configure parameters and simulation settings
+                  Настройте параметры и управляйте симуляцией
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-6">

@@ -265,7 +265,7 @@ const GraphEditor: React.FC<GraphEditorProps> = ({
           className="bg-secondary/80 backdrop-blur-sm"
         >
           <Plus className="h-4 w-4 mr-1" />
-          Add Node
+          Добавить узел
         </Button>
         <Button
           variant="outline"
@@ -275,7 +275,7 @@ const GraphEditor: React.FC<GraphEditorProps> = ({
           className="bg-secondary/80 backdrop-blur-sm"
         >
           <Trash2 className="h-4 w-4 mr-1" />
-          Delete
+          Удалить
         </Button>
       </div>
       
