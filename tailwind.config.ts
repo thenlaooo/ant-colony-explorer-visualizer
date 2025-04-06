@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// ACO specific colors
+				node: {
+					DEFAULT: '#3b82f6', // Blue
+					hover: '#60a5fa',
+					selected: '#2563eb'
+				},
+				edge: {
+					DEFAULT: '#94a3b8', // Gray
+					highlighted: '#f59e0b'
+				},
+				ant: '#000000',
+				pheromone: {
+					low: 'rgba(250, 204, 21, 0.3)', // Yellow with low opacity
+					medium: 'rgba(234, 179, 8, 0.5)',
+					high: 'rgba(217, 119, 6, 0.7)', // Orange with higher opacity
+					max: 'rgba(220, 38, 38, 0.9)' // Red with high opacity
+				},
+				bestPath: '#ef4444', // Red
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +103,21 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'ant-move': {
+					'0%': { transform: 'translate(0, 0)' },
+					'100%': { transform: 'translate(var(--end-x), var(--end-y))' }
+				},
+				'pulse-pheromone': {
+					'0%, 100%': { opacity: '0.6' },
+					'50%': { opacity: '0.9' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'ant-move': 'ant-move 0.5s linear forwards',
+				'pulse-pheromone': 'pulse-pheromone 2s ease-in-out infinite'
 			}
 		}
 	},
