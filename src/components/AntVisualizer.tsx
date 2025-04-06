@@ -33,19 +33,24 @@ const AntVisualizer: React.FC<AntVisualizerProps> = ({ ants, graph }) => {
       
       if (!currentNodeObj) return;
       
-      // Draw ant as a small black circle
-      ctx.fillStyle = '#000';
+      // Draw ant as a small circle with a unique color based on ant ID
+      const antId = parseInt(ant.id.replace('ant-', ''), 10);
+      const hue = (antId * 137) % 360; // Golden ratio to distribute colors
+      ctx.fillStyle = `hsl(${hue}, 80%, 60%)`;
       ctx.beginPath();
-      ctx.arc(currentNodeObj.x, currentNodeObj.y, 4, 0, 2 * Math.PI);
+      ctx.arc(currentNodeObj.x, currentNodeObj.y, 5, 0, 2 * Math.PI);
       ctx.fill();
+      ctx.strokeStyle = 'white';
+      ctx.lineWidth = 1;
+      ctx.stroke();
       
       // Draw recently visited path
       if (ant.visitedNodes.length > 1) {
         const lastVisitedIndex = Math.max(0, ant.visitedNodes.length - 5);
         const recentPath = ant.visitedNodes.slice(lastVisitedIndex);
         
-        ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = `hsla(${hue}, 70%, 60%, 0.6)`;
+        ctx.lineWidth = 2;
         ctx.beginPath();
         
         for (let i = 0; i < recentPath.length; i++) {

@@ -82,6 +82,54 @@ const GraphEditor: React.FC<GraphEditorProps> = ({
     document.addEventListener('mouseup', handleMouseUp);
   };
   
+  // Handle adding a new node
+  const handleAddNode = () => {
+    if (!svgRef.current) return;
+    
+    const svgRect = svgRef.current.getBoundingClientRect();
+    
+    // Calculate center position
+    const x = svgRect.width / 2;
+    const y = svgRect.height / 2;
+    
+    // Create a new node
+    const newNode: Node = {
+      id: `node-${Date.now()}`,
+      x,
+      y,
+      label: `${nodes.length + 1}`
+    };
+    
+    // Add edges to all existing nodes
+    const newEdges = [...edges];
+    
+    nodes.forEach(existingNode => {
+      const distance = Math.sqrt(
+        Math.pow(existingNode.x - x, 2) + Math.pow(existingNode.y - y, 2)
+      );
+      
+      // Add bidirectional edges
+      newEdges.push({
+        source: newNode.id,
+        target: existingNode.id,
+        distance,
+        pheromone: 1.0
+      });
+      
+      newEdges.push({
+        source: existingNode.id,
+        target: newNode.id,
+        distance,
+        pheromone: 1.0
+      });
+    });
+    
+    // Update nodes and edges
+    onNodesChange([...nodes, newNode]);
+    onEdgesChange(newEdges);
+    onSelectNode(newNode.id);
+  };
+  
   // Handle SVG click to add a new node
   const handleSvgClick = (event: React.MouseEvent<SVGSVGElement>) => {
     if (isDragging) return;
@@ -213,7 +261,7 @@ const GraphEditor: React.FC<GraphEditorProps> = ({
         <Button
           variant="outline"
           size="sm"
-          onClick={() => onSelectNode(null)}
+          onClick={handleAddNode}
           className="bg-secondary/80 backdrop-blur-sm"
         >
           <Plus className="h-4 w-4 mr-1" />
